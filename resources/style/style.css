@@ -1,0 +1,208 @@
+html {
+    font-family: "Roboto Light", serif;
+    background-color: rgba(22, 17, 38, 0.96);
+}
+
+body {
+    position: relative;
+    color: white;
+    max-width: 65rem;
+    margin: 0 auto;
+    min-height: 100dvh;
+}
+
+.textbox {
+    padding: 1rem;
+    margin: 1rem 0;
+    background-color: rgba(30, 41, 49, 0.96);
+    border: 1px solid rgba(100, 115, 121, 0.96);
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px 2px rgba(15,15,35,0.96);
+}
+
+.textbox > * {
+    margin-top: 0;
+}
+
+nav {
+    border-bottom: 2px solid rgb(48, 48, 48);
+    padding: 0 2rem;
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav li {
+    display: inline;
+    list-style-type: none;
+    cursor: pointer;
+}
+
+nav a:hover {
+    border-bottom: 2px solid white;
+}
+
+nav a {
+    padding: 0.75rem;
+    color: white;
+    text-decoration: none;
+    transition: border-bottom 0.1s ease-in;
+}
+
+main {
+    padding: 0 2rem;
+}
+
+.about {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.about > img {
+    box-shadow: 5px 5px 5px 2px rgba(15,15,35,0.96);
+    border: 3px solid rgba(100, 115, 121, 0.96);
+    border-radius: 10px;
+    width: 30%;
+}
+
+.about p {
+    margin: 0;
+    min-width: 25rem;
+    max-width: 60%;
+}
+
+.link {
+    color: yellow;
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.quiz {
+    max-width: 50%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.quiz > * {
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+.quiz > p {
+    padding: 1rem 0;
+    background-color: rgba(30, 41, 49, 0.96);
+    border: 1px solid rgba(100, 115, 121, 0.96);
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px 2px rgba(15,15,35,0.96);
+}
+
+.quiz > button {
+    cursor: pointer;
+    border: 1px solid rgba(100, 115, 121, 0.96);
+    color: yellow;
+    border-radius: 5px;
+    background-color: rgba(90, 73, 155, 0.96);
+    padding: 1rem 0;
+    box-shadow: 5px 5px 5px 2px rgba(15,15,35,0.96);
+    margin: 0.5rem 0;
+    transition: margin-bottom 0.2s linear 0.1s,
+                margin-top 0.2s linear 0.1s;
+}
+
+.quiz > button:disabled {
+    opacity: 25%;
+}
+
+.quiz > button:hover {
+    margin-top: 0.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.quiz > button:active {
+    background-color: rgba(90, 73, 155, 0.5);
+}
+
+.quiz > .response {
+    display: none;
+}
+
+
+footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    height: 3rem;
+    border-top: 2px solid rgb(48, 48, 48);
+}
+footer > div{
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.icons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.icons > a {
+    padding: 0.5rem;
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.icon > img {
+    filter: invert();
+    width: 2rem;
+    transition: all 0.2s ease-in;
+}
+
+.icon > img:hover {
+    filter: invert() drop-shadow(0 0 5px rgb(255, 255, 255));
+}
+
+form > label {
+    display: block;
+    margin: 0.5rem 0;
+}
+
+form > textarea {
+    max-width: 35rem;
+    width: 100%;
+    resize: none;
+    display: block;
+    margin: 0.5rem 0;
+}
+
+form > input, form > select, form > textarea {
+    border-radius: 5px;
+    background-color: #e5ecf5;
+    box-shadow: 2px 2px 5px 2px #170c2a;
+    transition: all 0.2s linear;
+}
+
+form > input, form > select {
+    padding: 0.5rem 1rem;
+    transition: all 0.2s linear;
+}
+
+form > *:not(label, h3):hover  {
+    box-shadow: 0 0 5px 2px #7b1adc;
+}
+
+form > *:focus {
+    outline: none;
+    box-shadow: 0 0 5px 2px #7b1adc;
+}
