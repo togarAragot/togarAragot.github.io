@@ -1,3 +1,8 @@
+const falseResponses = ["Aww, that was not right. How about another try?",
+    "That's a tough quiz. Don't worry, everyone makes mistakes.",
+    "That was close. I bet it was a missclick. You got another but try to focus this time.",
+    "You're kidding right? You know what. I'll forgive you, try again."
+];
 function handleQuizInteraction(id){
     const response = document.getElementById("response");
     response.style.display = "block";
@@ -19,13 +24,8 @@ function handleQuizInteraction(id){
     const pickedAnswer = document.getElementById(id);
     pickedAnswer.disabled = true;
 
-    const falseResponses = ["Aww, that was not right. I've highlighted the correct answer for you.",
-        "The answers are pretty similar, don't worry. It was made to be hard. I'll give you another chance",
-        "That was close. I bet it was a missclick. You got another try but use your hand to aim this time.",
-        "This gotta be a joke. You know what? I'll forgive you, try again."
-    ];
     const index = Math.floor(Math.random() * falseResponses.length);
 
     response.innerHTML = falseResponses[index];
-
+    falseResponses.splice(index, 1);
 }

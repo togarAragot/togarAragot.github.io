@@ -1,6 +1,6 @@
 html {
     font-family: "Roboto Light", serif;
-    background-color: rgba(22, 17, 38, 0.96);
+    background-color: rgba(22, 17, 38, 1);
 }
 
 body {
@@ -25,6 +25,10 @@ body {
 }
 
 nav {
+    z-index: 1;
+    background-color: rgba(22, 17, 38, 1);
+    position: sticky;
+    top: 0;
     border-bottom: 2px solid rgb(48, 48, 48);
     padding: 0 2rem;
     height: fit-content;
@@ -81,21 +85,26 @@ nav a {
         transform: translateY(-8px) rotate(-45deg);
     }
 
+    .about {
+        flex-direction: column;
+    }
+
     nav ul {
-        top: 3.3rem;
+        z-index: 1;
         padding: 0;
         display: flex;
         position: fixed;
-        left: -120%;
+        top: 3.3rem;
+        right: -120%;
         flex-direction: column;
         background-color: rgba(90, 73, 155);
         width: 100%;
         text-align: center;
-        transition: 0.3s;
+        transition: 0.3s ease-out;
     }
 
     nav ul.active {
-        left: 0;
+        right: 0;
     }
 
     nav li {
@@ -111,18 +120,20 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-content: center;
 }
 
 .about > img {
+    min-width: 20rem;
     box-shadow: 5px 5px 5px 2px rgba(15,15,35,0.96);
-    border: 3px solid rgba(100, 115, 121, 0.96);
+    border: 1px solid rgba(100, 115, 121, 0.96);
     border-radius: 10px;
     width: 30%;
 }
 
 .about p {
-    margin: 0;
-    min-width: 25rem;
+    margin: 0 0 1rem 0;
+    min-width: 18rem;
     max-width: 60%;
 }
 
@@ -233,13 +244,15 @@ form > label {
 
 form > textarea {
     max-width: 35rem;
-    width: 100%;
+    width: 85%;
     resize: none;
     display: block;
     margin: 0.5rem 0;
 }
 
 form > input, form > select, form > textarea {
+    margin: 0.5rem 0;
+    padding: 0.5rem 1rem;
     border-radius: 5px;
     background-color: #e5ecf5;
     box-shadow: 2px 2px 5px 2px #170c2a;
@@ -247,7 +260,6 @@ form > input, form > select, form > textarea {
 }
 
 form > input, form > select {
-    padding: 0.5rem 1rem;
     transition: all 0.2s linear;
 }
 
