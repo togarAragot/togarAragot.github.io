@@ -263,7 +263,7 @@ form > input, form > select {
     transition: all 0.2s linear;
 }
 
-form > *:not(label, h3):hover  {
+form > *:not(label, h3, p):hover  {
     box-shadow: 0 0 5px 2px #7b1adc;
 }
 
