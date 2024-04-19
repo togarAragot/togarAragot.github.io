@@ -15,7 +15,7 @@ function handleQuizInteraction(id){
 
         correctAnswer.style.border = "1px solid lawngreen";
         correctAnswer.style.boxShadow = "0 0 5px 2px lawngreen";
-        response.innerHTML = 'Well done, that\'s correct! You already know so much about me but have you seen <a href="skills.html" class="link">my Skills</a>.';
+        response.innerHTML = 'Well done, that\'s correct! You can find out more about me <a href="skills.html" class="link">here</a>.';
         answer1.disabled = true;
         answer3.disabled = true;
         return;
