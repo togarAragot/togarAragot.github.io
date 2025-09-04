@@ -1,62 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Luis Stauberg</title>
-    <link href="resources/style/style.css" rel="stylesheet">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-</head>
-<body>
-    <nav>
-        <div class="name">
-            <h2>Luis Stauberg</h2>
-        </div>
-        <div class="navigation">
-            <ul id="navlist">
-                <li><a href="index.html">About me</a></li>
-                <li><a href="skills.html">My Skills</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
+<html>
+    <head>
 
-        <div class="hamburger">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
-    </nav>
-    <script src="./resources/js/nav.js"></script>
-    <main>
-        <h2>About me</h2>
-        <div class="about">
-            <p>
-                Hello and welcome to my Portfolio. My name is Luis and I am a software developer focusing on web development. You can find <a class="link" href="skills.html">my skills here</a>.
-            </p>
-            <img src="./resources/img/aboutme.jpeg" alt="Picture of me">
-        </div>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css">
 
-        <script src="resources/js/quiz.js"></script>
+        <!-- load all to window -->
+        <script src="./js/utils/format.js" defer></script>
+        <script src="./js/utils/dom.js" defer></script>
+        
+        <script src="./js/utils/state.js" defer></script>
+        <script src="./js/helper/upgrades.js" defer></script>
+        <script src="./js/helper/rebirths.js" defer></script>
+        <script src="./js/utils/game.js" defer></script>
 
-        <h2>Quiz time!</h2>
-        <div class="quiz">
-            <p>How are you today?</p>
-            <button onclick="handleQuizInteraction('answer_1')" id="answer_1">Not so good</button>
-            <button onclick="handleQuizInteraction('answer_2')" id="answer_2">Obviously Great!</button>
-            <button onclick="handleQuizInteraction('answer_3')" id="answer_3">Meh</button>
-            <p class="response" id="response"></p>
-        </div>
-    </main>
-    <div style="height: 3rem"></div>
-    <footer>
-        <div>
-            <div>Luis Stauberg &#169; 2024</div>
-            <div class="icons">
-                <a href="https://discord.gg/Dq23PJrY" class="icon"><img src="./resources/img/icons8-discord-480.svg" alt="Discord Logo"></a>
-                <a href="https://github.com/togarAragot" class="icon"><img src="./resources/img/icons8-github.svg" alt="GitHub Logo"></a>
+        <script src="./js/reactive/interactions-menu.js" defer></script>
+
+        <!-- main can now work -->
+        <script src="./js/main.js" defer></script>
+
+    </head>
+
+    <body>
+        <main class="background">
+            <div class="clicker">
+                <h1>Gönrgy Clicker</h1>
+                <p>Gönrgies per Second: <span id="gps"></span></p>
+                <div class="clicker-wrapper">
+                    <img id="clicker" class="clicker-btn" src="./assets/goenrgy.webp" alt="goenrgy" draggable="false">
+                </div>
+                <h2>Gönrgies: <span id="clickCount"></span></p>
+            </div>
+
+            <button id="open-interactions-menu" class="open-interactions-menu">
+                <div class="chevron-wrapper">
+                    <span class="chevron-top"></span>
+                    <span class="chevron-bottom"></span>
+                </div>
+
+                <span class="open-interactions-text">Upgrades</span>
+            </button>
+            
+            <div class="interactions">
+                <div class="tab-labels">
+                    <input type="radio" name="tab" id="upgrades" checked class="interactions-tab-check">
+                    <label class="upgrades-label tab-label" for="upgrades">Upgrades</label>
+
+                    <input type="radio" name="tab" id="rebirth" class="interactions-tab-check">
+                    <label class="rebirth-label tab-label" for="rebirth">Rebirth</label>
+                </div>
+
+                <div class="upgrades-list"></div>
+                <div class="rebirth-list"></div>
+            </div>
+        </main>
+
+        <div class="offline-notification-container hidden">
+            <div class="offline-notification">
+                <h3>Offline Earnings!</h3>
+                <p class="offline-stats">
+                    <span class="offline-earnings">While you where offline, you gained <span class="fat text-green">$gainedAmount Gönrgies</span>!</span><br>
+                    <span class="offline-time">Of your maximum time of <span class="fat text-red">$maximumOfflineTime</span> you were gone for <span class="fat text-gold">$timePassed</span>.</span><br>
+                    <span class="offline-time-rate">That's <span class="fat text-underline text-gold">$gpsRate GPS</span> (Gönrgies per Second)</span>
+                </p>
+
+                <button class="close-offline-notification">Yay!</button>
             </div>
         </div>
-    </footer>
-
-</body>
+    </body>
 </html>
