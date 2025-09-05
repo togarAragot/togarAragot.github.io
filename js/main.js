@@ -23,7 +23,7 @@ function onTick() {
     const gps = Game.getGoenPerSecond();
     const gpt = gps / ticksPerSecond;
 
-    if (!isNaN(gps) && !isNan(gpt)) {
+    if (!isNaN(gps) && !isNaN(gpt)) {
         window.clickCount += gpt;
         window.trackingStats.totalGoensGenerated += gpt;
 
