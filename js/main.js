@@ -6,6 +6,8 @@ const Upgrades = window.Upgrades;
 const Rebirths = window.Rebirths;
 const Game = window.Game;
 
+const tickDuration = 50;
+
 function click(event) {
     const generatedGoens = Game.getClickValue();
 
@@ -16,8 +18,9 @@ function click(event) {
     DomUtil.spawnClickNumber(event.clientX, event.clientY, generatedGoens);
 }
 
-function onSecondPassed() {
-    const gps = Game.getGoenPerSecond();
+function onTick() {
+    const ticksPerSecond = 1000 / tickDuration; 
+    const gps = Game.getGoenPerSecond() / ticksPerSecond;
 
     if (!isNaN(gps)) {
         window.clickCount += gps;
@@ -30,7 +33,7 @@ function onSecondPassed() {
             Upgrades.updateElement(type);
         });
     }
-
+    
     StateUtil.save();
 }
 
@@ -113,7 +116,7 @@ function init() {
 
     DomUtil.updateGPSElement(Game.getGoenPerSecond());
     DomUtil.updateClickCountElement();
-    setInterval(onSecondPassed, 1000);
+    setInterval(onTick, tickDuration);
 }
 
 init();
