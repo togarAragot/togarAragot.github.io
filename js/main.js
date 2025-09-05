@@ -19,12 +19,13 @@ function click(event) {
 }
 
 function onTick() {
-    const ticksPerSecond = 1000 / tickDuration; 
-    const gps = Game.getGoenPerSecond() / ticksPerSecond;
+    const ticksPerSecond = 1000 / tickDuration;
+    const gps = Game.getGoenPerSecond();
+    const gpt = gps / ticksPerSecond;
 
-    if (!isNaN(gps)) {
-        window.clickCount += gps;
-        window.trackingStats.totalGoensGenerated += gps;
+    if (!isNaN(gps) && !isNan(gpt)) {
+        window.clickCount += gpt;
+        window.trackingStats.totalGoensGenerated += gpt;
 
         DomUtil.updateClickCountElement();
         DomUtil.updateGPSElement(gps);
