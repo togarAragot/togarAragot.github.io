@@ -4,12 +4,14 @@ window.balanceManager = {
 
     addBalance(amount) {
         this.currentBalance += amount;
+        this.currentBalance = Math.round(this.currentBalance * 100) / 100;
         this.saveBalance();
         this.updateBalanceDisplay();
     },
 
     removeBalance(amount) {
         this.currentBalance = this.currentBalance - amount < 0 ? 0 : this.currentBalance - amount;
+        this.currentBalance = Math.round(this.currentBalance * 100) / 100;
         this.saveBalance();
         this.updateBalanceDisplay();
     },
