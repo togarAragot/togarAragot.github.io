@@ -1,0 +1,176 @@
+/* Grundkonfiguration */
+:root {
+    --bg-dark: #1a1b2e;
+    --card-bg: #161b2c;
+    --border-color: #2d334a;
+    --tile-bg: #2d334a;
+    --tile-hover: #3d445e;
+    --accent-red: #ff4d29;
+    --accent-orange: #f59e0b;
+    --accent-green: #10b981;
+    --text-gray: #9ca3af;
+}
+
+.bg-pattern {
+    background-image: radial-gradient(#2d2e46 1px, transparent 1px);
+    background-size: 30px 30px;
+}
+
+.game-card {
+    background-color: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 24px;
+    padding: 0.5rem;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    margin: auto;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.header h1 {
+    font-size: 28px;
+    margin: 0;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    color: var(--accent-green);
+    font-size: 14px;
+    margin-top: 8px;
+    opacity: 0.9;
+}
+
+.status-box {
+    width: 100%;
+    height: 96px;
+    background-color: #0d1117;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    overflow: hidden;
+}
+
+.stat-item { text-align: center; }
+.stat-label { color: var(--text-gray); font-size: 10px; text-transform: uppercase; font-weight: 700; margin-bottom: 4px; }
+.stat-value { font-size: 20px; font-weight: 700; margin: 0; }
+
+.banner-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.banner-success { background-color: rgba(16, 185, 129, 0.05); }
+.banner-error { background-color: rgba(239, 68, 68, 0.05); }
+
+/* Spielfeld & Kacheln */
+.mines-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    max-width: 400px;
+    margin: 0 auto 40px auto;
+}
+
+.tile {
+    aspect-ratio: 1 / 1;
+    background-color: var(--tile-bg);
+    border-radius: 12px;
+    border: 2px solid #1f2937;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+/* KORREKTUR: Icons kleiner machen */
+.tile svg {
+    width: 45%;  /* Entspricht der Optik in grafik.jpg */
+    height: 45%;
+    stroke: white;
+}
+
+.tile:hover:not(.revealed) {
+    background-color: var(--tile-hover);
+    transform: scale(1.02);
+}
+
+.tile.safe {
+    background-color: var(--accent-green);
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+    border-color: var(--accent-green);
+}
+
+.tile.bug {
+    background-color: #ef4444;
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
+    border-color: #ef4444;
+}
+
+/* Controls & Buttons */
+.controls { display: flex; flex-direction: column; gap: 24px; }
+.control-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+.label { font-size: 14px; font-weight: 700; }
+.options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.bet-btn, .bug-btn {
+    background-color: var(--tile-bg);
+    border: 1px solid #4b5563;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.btn-active {
+    background-color: var(--accent-red) !important;
+    border-color: var(--accent-red) !important;
+}
+
+.main-btn {
+    width: 100%;
+    padding: 20px;
+    border-radius: 16px;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-family: inherit;
+}
+
+.start-mode { background: linear-gradient(90deg, #ff4d29, #ff6b4a); color: white; }
+.cashout-mode { background: linear-gradient(90deg, #f59e0b, #ea580c); color: white; }
+.main-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.bet-counter-center {
+    display: flex;
+    justify-content: center;
+}

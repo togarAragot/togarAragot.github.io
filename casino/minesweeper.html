@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Bugsweeper</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/minesweeper.css">
+    <link rel="stylesheet" href="./css/nav.css">
+    <link rel="stylesheet" href="./css/bet-counter.css">
+
+    <script src="./js/nav.js" defer></script>
+    <script src="./js/minesweeper.js" defer></script>
+    <script src="./js/balance.js" defer></script>
+    <script src="./js/bet-counter.js" defer></script>
+</head>
+<body class="bg-pattern">
+    <nav class="main-nav">
+        <div class="nav-upper">
+            <div class="brand-section">
+                <div class="nav-icon-container">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"></path><path d="m6 8-4 4 4 4"></path><path d="m14.5 4-5 16"></path></svg>
+                </div>
+                <div class="brand-text">
+                    <p class="brand-title">&#60;Code Casino /&gt;</p>
+                    <p class="brand-tagline">// Where developers gamble with syntax</p>
+                </div>
+            </div>
+
+            <div class="balance-container">
+                <button id="balanceButton" class="balance-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-coins"><circle cx="8" cy="8" r="6"></circle><path d="M18.09 10.37A6 6 0 1 1 10.34 18"></path><path d="M7 6h1v4"></path><path d="m16.71 13.88.7.71-2.82 2.82"></path></svg>
+                    <div class="balance-info">
+                        <span class="balance-label">Balance</span>
+                        <span class="balance-amount current-balance">$0</span>
+                    </div>
+                    <svg class="chevron-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
+
+                <div id="balanceDropdown" class="dropdown hidden">
+                    <div class="dropdown-header">
+                        <p>// Account Overview</p>
+                    </div>
+                    <div class="dropdown-body">
+                        <div class="balance-card">
+                            <p class="card-label">Current Balance</p>
+                            <p class="card-value current-balance">$0</p>
+                        </div>
+                        <button id="openDepositModal" class="deposit-trigger-btn">
+                            <div class="trigger-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1" /><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4" /></svg>
+                            </div>
+                            <div class="trigger-text">
+                                <p>Add funds</p>
+                                <p class="trigger-sub">// Add more funds</p>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-bottom">
+            <a href="/slots.html" class="nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 16 4-4-4-4"></path><path d="m6 8-4 4 4 4"></path><path d="m14.5 4-5 16"></path></svg>
+                <span>Pull Request</span>
+            </a>
+            <a href="/minesweeper.html" class="nav-link nav-link-active">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="13" r="9"></circle><path d="M14.35 4.65 16.3 2.7a2.41 2.41 0 0 1 3.4 0l1.6 1.6a2.4 2.4 0 0 1 0 3.4l-1.95 1.95"></path><path d="m22 2-1.5 1.5"></path></svg>
+                <span>Bugsweeper</span>
+            </a>
+            <a href="/blackjack.html" class="nav-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 18v4"></path><path d="M2 14.499a5.5 5.5 0 0 0 9.591 3.675.6.6 0 0 1 .818.001A5.5 5.5 0 0 0 22 14.5c0-2.29-1.5-4-3-5.5l-5.492-5.312a2 2 0 0 0-3-.02L5 8.999c-1.5 1.5-3 3.2-3 5.5"></path></svg>
+                <span>Stackoverflow</span>
+            </a>
+        </div>
+    </nav>
+
+    <div id="depositModal" class="modal-overlay hidden">
+        <div class="modal-container">
+            <div class="modal-header">
+                <div class="modal-header-text">
+                    <h2>&lt;Deposit /&gt;</h2>
+                    <p class="modal-subtitle">// Add funds via crypto</p>
+                </div>
+                <button id="closeDepositModal" class="close-btn">&times;</button>
+            </div>
+            
+            <div class="modal-content">
+                <div class="modal-balance-view">
+                    <p class="view-label">// Current Balance</p>
+                    <p class="view-amount current-balance">$0</p>
+                </div>
+
+                <div class="selection-group">
+                    <p class="group-label">// Select Cryptocurrency</p>
+                    <div id="cryptoGrid" class="crypto-grid">
+                        <button data-crypto="BTC" class="crypto-option active">
+                            <span class="crypto-icon">₿</span>
+                            <span class="crypto-name">BTC</span>
+                        </button>
+                        <button data-crypto="ETH" class="crypto-option">
+                            <span class="crypto-icon">⚡</span>
+                            <span class="crypto-name">ETH</span>
+                        </button>
+                        <button data-crypto="USDT" class="crypto-option">
+                            <span class="crypto-icon">$</span>
+                            <span class="crypto-name">USDT</span>
+                        </button>
+                        <button data-crypto="SOL" class="crypto-option">
+                            <span class="crypto-icon">◍</span>
+                            <span class="crypto-name">SOL</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="selection-group">
+                    <p class="group-label">// Select Amount</p>
+                    <div id="amountGrid" class="amount-grid">
+                        <button data-amount="50" class="amount-option">$50</button>
+                        <button data-amount="100" class="amount-option">$100</button>
+                        <button data-amount="250" class="amount-option">$250</button>
+                        <button data-amount="500" class="amount-option">$500</button>
+                        <button data-amount="1000" class="amount-option">$1000</button>
+                        <button data-amount="5000" class="amount-option">$5000</button>
+                    </div>
+                    <input id="customAmount" type="number" placeholder="$ Custom amount" class="custom-input">
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button id="cancelDeposit" class="footer-btn-secondary">Cancel</button>
+                <button id="confirmBtn" class="footer-btn-primary">Confirm Deposit</button>
+            </div>
+        </div>
+    </div>
+    <div class="game-card">
+        <div class="header">
+            <h1>Bugsweeper</h1>
+            <p class="subtitle">// Avoid the bugs! 🐛</p>
+        </div>
+
+        <div id="status-box" class="status-box">
+            </div>
+
+        <div id="grid" class="mines-grid"></div>
+
+        <div class="controls">
+            <div class="bet-counter-center">
+                <div class="bet-counter">
+                    <button class="decrease-bet" value="1">- 1,00</button>
+                    <button class="decrease-bet" value="0.1">- 0,10</button>
+                    <input type="number" class="bet-input" value="1.00">
+                    <button class="increase-bet" value="0.1">+ 0,10</button>
+                    <button class="increase-bet" value="1">+ 1,00</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <span class="label">Number of Bugs:</span>
+                <div class="options" id="bug-options">
+                    <button onclick="setBugs(3)" class="bug-btn">3 🐛</button>
+                    <button onclick="setBugs(5)" class="bug-btn">5 🐛</button>
+                    <button onclick="setBugs(7)" class="bug-btn">7 🐛</button>
+                    <button onclick="setBugs(10)" class="bug-btn">10 🐛</button>
+                </div>
+            </div>
+
+            <button id="main-button" onclick="handleButtonClick()" class="main-btn start-mode">
+                <span id="button-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg>
+                </span>
+                <span id="button-text">Start Game</span>
+            </button>
+        </div>
+    </div>
+</body>
+</html>

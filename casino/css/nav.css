@@ -1,0 +1,387 @@
+:root {
+    --primary-bg: #1a1b26;
+    --nav-gradient: linear-gradient(to bottom right, #1e1b4b, #3b0764);
+    --gold-gradient: linear-gradient(to right, #facc15, #f97316);
+    --emerald-gradient: linear-gradient(to right, #10b981, #0d9488);
+    --border-color: rgba(139, 92, 246, 0.2);
+    --text-main: #e5e7eb;
+    --text-dim: #9ca3af;
+    --bg-dark: #1a1b2e;
+
+}
+
+* {
+    box-sizing: border-box;
+    font-family: Monaco, "Courier New", monospace;
+}
+
+body {
+    margin: 0;
+    font-family: 'Space Mono', monospace;
+    background-color: var(--bg-dark);
+    color: #e5e7eb;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.bg-pattern {
+    background-image: radial-gradient(#2d2e46 1px, transparent 1px);
+    background-size: 30px 30px;
+}
+
+body.casino-theme {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--nav-gradient);
+    color: var(--text-main);
+}
+
+/* Nav Styles */
+.main-nav {
+    padding: 1.5rem 8rem;
+}
+
+.nav-upper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+}
+
+.brand-section {
+    display: flex;
+    gap: 1.25rem;
+}
+
+.nav-icon-container {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(to bottom right, #4ade80, #16a34a);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+}
+
+.nav-icon-container svg {
+    width: 100%;
+    height: 100%;
+    stroke: white;
+}
+
+.brand-title {
+    font-size: 24px;
+    margin: 4px 0 0 0;
+}
+
+.brand-tagline {
+    font-size: 12px;
+    color: #4ade80;
+    margin: 4px 0 0 0;
+}
+
+/* Balance Button */
+.balance-container {
+    position: relative;
+}
+
+.balance-btn {
+    background: var(--gold-gradient);
+    border: 2px solid #facc15;
+    border-radius: 16px;
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+    transition: filter 0.2s;
+}
+
+.balance-btn:hover {
+    filter: brightness(1.1);
+}
+
+.balance-btn svg { width: 24px; height: 24px; }
+.balance-info { display: flex; flex-direction: column; text-align: left; line-height: 1.2; }
+.balance-label { font-size: 10px; opacity: 0.9; text-transform: uppercase; }
+.balance-amount { font-weight: bold; font-size: 18px; }
+
+/* Dropdown */
+.dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    width: 280px;
+    background: linear-gradient(to right, #854d0e, #a16207);
+    border: 2px solid #713f12;
+    border-radius: 16px;
+    z-index: 100;
+    overflow: hidden;
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.5);
+}
+
+.dropdown.hidden { display: none; }
+
+.dropdown-header {
+    padding: 8px 16px;
+    border-bottom: 2px solid #713f12;
+    font-size: 12px;
+}
+
+.dropdown-body {
+    background: #1f2937;
+    padding: 16px;
+}
+
+.balance-card {
+    background: rgba(55, 65, 81, 0.5);
+    border: 1px solid #713f12;
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 12px;
+}
+
+.card-label { font-size: 10px; color: var(--text-dim); margin-bottom: 4px; }
+.card-value { font-size: 20px; font-weight: bold; }
+
+.deposit-trigger-btn {
+    width: 100%;
+    background: var(--emerald-gradient);
+    border: none;
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.deposit-trigger-btn:active { transform: scale(0.98); }
+
+.trigger-icon {
+    background: rgba(255,255,255,0.2);
+    padding: 6px;
+    border-radius: 6px;
+    display: flex;
+}
+
+.trigger-icon svg { width: 20px; height: 20px; }
+.trigger-text { text-align: left; }
+.trigger-sub { font-size: 10px; opacity: 0.8; }
+
+/* Bottom Nav Links */
+.nav-bottom {
+    display: flex;
+    gap: 12px;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.75rem 1.5rem;
+    background: rgba(163, 163, 163, 0.15);
+    border: 2px solid rgba(163, 163, 163, 0.5);
+    border-radius: 12px;
+    text-decoration: none;
+    color: white;
+    transition: background 0.2s;
+}
+
+.nav-link svg { width: 20px; height: 20px; }
+
+.nav-link:hover { background: rgba(163, 163, 163, 0.3); }
+
+.nav-link-active {
+    background: linear-gradient(to right, #d946ef, #ec4899);
+    border-color: #d946ef;
+    box-shadow: 0 0 15px rgba(217, 70, 239, 0.4);
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-overlay.hidden { display: none; }
+
+.modal-container {
+    background: #1a1b26;
+    width: 100%;
+    max-width: 480px;
+    border-radius: 20px;
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    overflow: hidden;
+}
+
+.modal-header {
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 { font-size: 24px; margin: 0; }
+.modal-subtitle { color: #a78bfa; font-size: 12px; margin-top: 4px; }
+
+.close-btn {
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    font-size: 32px;
+    cursor: pointer;
+}
+
+.modal-content {
+    background: #13141f;
+    padding: 1.5rem;
+}
+
+.modal-balance-view {
+    background: rgba(26, 27, 38, 0.5);
+    border: 1px solid #1f2937;
+    padding: 1.25rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+}
+
+.view-label { font-size: 10px; color: #4b5563; text-transform: uppercase; margin-bottom: 4px; }
+.view-amount { font-size: 28px; font-weight: bold; }
+
+.selection-group { margin-bottom: 1.5rem; }
+.group-label { font-size: 10px; color: #4b5563; text-transform: uppercase; margin-bottom: 12px; }
+
+/* Grids */
+.crypto-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.crypto-option {
+    background: #1a1b26;
+    border: 1px solid #1f2937;
+    border-radius: 12px;
+    padding: 12px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    color: var(--text-dim);
+    transition: all 0.2s;
+}
+
+.crypto-option.active {
+    background: linear-gradient(to bottom right, #f97316, #ea580c);
+    border-color: #fb923c;
+    color: white;
+    box-shadow: 0 0 15px rgba(249, 115, 22, 0.3);
+}
+
+.crypto-icon { font-size: 20px; margin-bottom: 4px; }
+.crypto-name { font-size: 10px; font-weight: bold; }
+
+.amount-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.amount-option {
+    background: #1a1b26;
+    border: 1px solid #1f2937;
+    padding: 12px;
+    border-radius: 8px;
+    color: var(--text-dim);
+    cursor: pointer;
+    border: 1px solid #1f2937;
+}
+
+.amount-option.active {
+    background: rgba(139, 92, 246, 0.1);
+    border-color: #8b5cf6;
+    color: white;
+}
+
+.custom-input {
+    width: 100%;
+    margin-top: 12px;
+    background: #1a1b26;
+    border: 1px solid #1f2937;
+    padding: 12px;
+    border-radius: 8px;
+    color: white;
+    outline: none;
+}
+
+.custom-input:focus { border-color: #8b5cf6; }
+
+.modal-footer {
+    padding: 1.5rem;
+    display: flex;
+    gap: 12px;
+}
+
+.footer-btn-secondary {
+    flex: 1;
+    padding: 12px;
+    background: none;
+    border: 1px solid #374151;
+    color: var(--text-dim);
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.footer-btn-primary {
+    flex: 1;
+    padding: 12px;
+    background: var(--emerald-gradient);
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+/* Mobile nav adjustments */
+@media (max-width: 768px) {
+    .main-nav {
+        padding: 1rem;
+    }
+
+    .nav-upper {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .brand-section {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .nav-icon-container { width: 48px; height: 48px; padding: 8px; }
+    .brand-title { font-size: 18px; }
+    .brand-tagline { font-size: 11px; }
+
+    .balance-btn { padding: 0.5rem 0.75rem; border-radius: 12px; }
+    .balance-info { align-items: center; }
+
+    .nav-bottom { justify-content: center; gap: 8px; flex-wrap: wrap; }
+    .nav-link { padding: 0.5rem 0.75rem; }
+
+    .dropdown {
+        right: 50%;
+        transform: translateX(50%);
+        width: 90vw;
+        max-width: 320px;
+    }  
+}
+
+@media (max-width: 480px) {
+    .main-nav { padding: 0.6rem; }
+    .brand-tagline { display: none; }
+    .nav-icon-container { width: 40px; height: 40px; }
+}

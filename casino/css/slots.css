@@ -1,0 +1,281 @@
+:root {
+    --card-bg: #161b2c;
+}
+
+.title,
+.subtitle {
+    color: white;
+    text-align: center;
+    margin-top: 0;
+}
+
+.slots-container {
+    background-color: var(--card-bg);
+    border: 2px solid var(--border-color);
+    border-radius: 24px;
+    padding: 1.5rem;
+    width: 80%;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    margin: auto;
+}
+
+.game-controls {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.line-select {
+    padding: 0.5rem 1rem;
+    border: none;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+    background: linear-gradient(to right, #facc15, #f97316);
+    background-color: #facc15;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.spin-button {
+    color: white;
+    font-weight: bold;
+    border: 2px solid rgba(163, 163, 163, 0.8);
+    border: none;
+    padding: 0 1.5rem;
+    height: 100%;
+    border-radius: 0.5rem;
+    background: linear-gradient(
+            to right,
+            #9529fa,
+            #f82f4d,
+            #9529fa
+        );
+    background-size: 200% 200%;
+    background-position: 0% 50%;
+    transition: background-position transform 400ms ease-in-out;
+    cursor: pointer;
+}
+
+.spin-button:hover {
+    background-position: 100% 50%;
+    animation: gradient 2s linear infinite reverse;
+
+    transform: scale(1.05);
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 200% 0%;
+    }
+}
+
+.game {
+    background-color: rgba(101, 90, 204, 0.219);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    aspect-ratio: 5 / 3;
+    min-height: 20rem;
+    max-height: 36rem;
+    padding: 1rem;
+    border-radius: 2rem;
+    margin-bottom: 1rem;
+    overflow: visible;
+    position: relative;
+    align-content: center;
+}
+
+@media (max-width: 768px) {
+    .slots-container {
+        width: 100%;
+    }
+
+    .game {
+        min-height: 15rem;
+        max-height: 25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .game {
+        min-height: 12rem;
+        max-height: 18rem;
+    }
+}
+
+.slot-column {
+    position: relative;
+    flex: 1 1 20%;
+    height: 100%;
+    overflow: hidden;
+    min-width: 0;
+}
+
+.slot-item {
+    width: 12rem;
+    height: 12rem;
+
+    padding: 1rem;
+    background-color: rgba(255, 255, 255, 0.089);
+    border: 2px solid black;
+    border-radius: 1rem;
+
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    max-height: 32%;
+    max-width: 90%;
+    transition: top 410ms linear, bottom 410ms linear, transform 410ms linear;
+}
+
+.slot-item.before-active[data-pos="1"] {
+    top: -100%
+}
+
+.slot-item.before-active[data-pos="2"] {
+    top: -50%;
+}
+
+.slot-item.before-active[data-pos="3"] {
+    bottom: 100%;
+}
+
+.slot-item.active[data-pos="1"] {
+    top: 0;
+}
+
+.slot-item.active[data-pos="2"] {
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.slot-item.active[data-pos="3"] {
+    bottom: 0;
+}
+
+.slot-item.after-active[data-pos="1"] {
+    top: 105%;
+}
+
+.slot-item.after-active[data-pos="2"] {
+    top: 150%;
+}
+
+.slot-item.after-active[data-pos="3"] {
+    bottom: -100%;
+}
+
+
+.slot-item-img {
+    height: 100%;
+    width: 100%;
+}
+
+.winning-lines-overlay {
+    z-index: 100;
+}
+
+.winning-line-flash {
+    animation: lineFlash 1.5s ease-in-out infinite;
+}
+
+@keyframes lineFlash {
+    0%, 100% {
+        opacity: 1;
+        stroke-width: 4;
+        filter: brightness(1) drop-shadow(0 0 8px currentColor);
+    }
+    50% {
+        opacity: 0.3;
+        stroke-width: 8;
+        filter: brightness(2) drop-shadow(0 0 20px currentColor);
+    }
+}
+
+/* Responsive adjustments for game controls and winnings display */
+@media (max-width: 768px) {
+    .game-controls {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .line-select {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .bet-counter {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        gap: 0; /* keep items compact on mobile */
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+
+    .bet-counter button {
+        padding: 6px 8px;
+        font-size: 0.9rem;
+        min-width: auto;
+    }
+
+    .bet-counter .bet-input {
+        width: 4.5rem;
+        padding: 6px 8px;
+        font-size: 0.95rem;
+    }
+
+    .spin-controls {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .spin-button {
+        width: 100%;
+        max-width: 320px;
+        height: 48px;
+        padding: 0 1rem;
+    }
+
+    /* position winnings as an overlay above the slots for mobile */
+    .slots-ui { position: relative; }
+}
+
+@media (max-width: 480px) {
+    .game {
+        padding: 0.5rem;
+    }
+
+    .winnings-display {
+        font-size: 0.95rem;
+    }
+
+    .bet-counter button, .bet-counter input, .line-select {
+        font-size: 0.9rem;
+    }
+}
+
+.winnings-display {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 250;
+    display: none; /* toggled by JS */
+    pointer-events: none;
+    padding: 1.5rem 1.25rem;
+    border-radius: 12px;
+    background: rgba(0, 0, 0,0.40);
+    backdrop-filter: blur(6px) saturate(120%);
+    -webkit-backdrop-filter: blur(6px) saturate(120%);
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.45);
+    color: #e6ffee;
+    font-weight: 700;
+    white-space: nowrap;
+}
