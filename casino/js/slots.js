@@ -169,7 +169,6 @@ function spinSlots() {
                 if (completedSpins === totalColumns) {
                     // All spins completed, check winnings and draw lines
                     const result = checkWinnings(bet);
-                    console.log('Winnings:', result);
                     if (result.winAmount > 0) {
                         window.balanceManager.addBalance(result.winAmount);
                         // Display winnings and hide bet counter
@@ -275,9 +274,6 @@ function drawWinningLines(winningLines) {
     const contentWidth = gameElement.offsetWidth - (paddingLeft * 2);
     const contentHeight = gameElement.offsetHeight - (paddingTop * 2);
     
-    console.log('Content dimensions:', contentWidth, contentHeight);
-    console.log('Padding:', paddingLeft, paddingTop);
-    
     const columnWidth = contentWidth / slotColumnsElements.length;
     const rowHeight = contentHeight / slotRows;
 
@@ -301,7 +297,6 @@ function drawWinningLines(winningLines) {
             return `${x},${y}`;
         }).join(' ');
 
-        console.log('Points:', points);
 
         const polylineElement = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
         polylineElement.setAttribute('points', points);
@@ -321,7 +316,6 @@ function drawWinningLines(winningLines) {
     });
 
     gameElement.appendChild(svg);
-    console.log('SVG appended with border for visibility');
 }
 
 window.addEventListener('resize', () => {
