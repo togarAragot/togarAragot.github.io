@@ -168,20 +168,16 @@
 }
 
 .table-main {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: 2rem;
-  padding-top: 1rem;
-  border-top: 2px solid #2d5a27;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding-top: 1rem;
+    border-top: 2px solid #2d5a27;
 }
 
 .bet-panel {
-  background: rgba(0,0,0,0.3);
-  padding: 1rem;
-  border-radius: 10px;
-  border: 1px solid #444;
-  min-width: 240px;
+    min-width: 240px;
 }
 
 .bet-panel label {
@@ -222,7 +218,7 @@
   font-size: 1rem;
   font-weight: 600;
   text-align: center;
-  margin: 0;
+  margin-top: 1rem;
 }
 
 .control-panel {
@@ -251,9 +247,12 @@
 }
 
 #play-btn {
-  background: linear-gradient(145deg, #4CAF50, #45a049);
-  color: white;
-  box-shadow: 0 4px 12px rgba(76,175,80,0.4);
+    position: absolute;
+    bottom: -0.5rem;
+    right: -0.5rem;
+    background: linear-gradient(145deg, #4CAF50, #45a049);
+    color: white;
+    box-shadow: 0 4px 12px rgba(76,175,80,0.4);
 }
 
 #play-btn:hover {

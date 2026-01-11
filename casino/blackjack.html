@@ -6,9 +6,12 @@
     <title>Stackoverflow</title>
     <link rel="stylesheet" href="./css/nav.css">
     <link rel="stylesheet" href="./css/blackjack.css">
+    <link rel="stylesheet" href="./css/bet-counter.css">
+    
     <script src="./js/nav.js" defer></script>
     <script src="./js/balance.js" defer></script>
     <script src="./js/blackjack.js" defer></script>
+    <script src="./js/bet-counter.js" defer></script>
 </head>
 <body class="bg-pattern">
     <nav class="main-nav">
@@ -150,12 +153,13 @@
         <main class="table-main">
             <section class="bet-panel">
             <label>Bet Amount:</label>
-            <div class="bet-buttons">
-                <button data-bet="10">$10</button>
-                <button data-bet="20">$20</button>
-                <button data-bet="50">$50</button>
-                <button data-bet="100">$100</button>
-            </div>
+            <div class="bet-counter">
+                    <button class="decrease-bet" value="1">- 1,00</button>
+                    <button class="decrease-bet" value="0.1">- 0,10</button>
+                    <input type="number" class="bet-input" value="1.00">
+                    <button class="increase-bet" value="0.1">+ 0,10</button>
+                    <button class="increase-bet" value="1">+ 1,00</button>
+                </div>
             <p id="status-text">Place your bet!</p>
             </section>
 

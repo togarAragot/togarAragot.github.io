@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const suits = ["♥", "♦", "♣", "♠"];
   const ranks = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
   
-  let deck = [], playerHand = [], dealerHand = [], gameOver = false, bet = 10;
+  let deck = [], playerHand = [], dealerHand = [], gameOver = false, bet = 1;
 
   const dealerRow = document.getElementById("dealer-row");
   const playerRow = document.getElementById("player-row");
@@ -76,13 +76,6 @@ document.addEventListener('DOMContentLoaded', function() {
     return div;
   }
 
-  betButtons.forEach(btn => {
-    btn.addEventListener("click", () => {
-      bet = Number(btn.dataset.bet);
-      statusText.textContent = `Bet: $${bet}`;
-    });
-  });
-
   function renderHands(showDealerHole = false) {
     dealerRow.innerHTML = "";
     playerRow.innerHTML = "";
@@ -108,6 +101,8 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function startGame() {
+    bet = parseFloat(document.querySelector(".bet-input").value);
+
     if (!window.balanceManager.hasSufficientBalance(bet)) {
       alert("Insufficient balance for this bet!");
       return;
